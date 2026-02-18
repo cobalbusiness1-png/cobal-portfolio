@@ -8,7 +8,7 @@ body{
 overflow:hidden;
 font-family:sans-serif;
 
-/* 透明感ブルー */
+/* 透明感のある青グラデ */
 background:linear-gradient(
 135deg,
 rgba(30,70,130,0.95) 0%,

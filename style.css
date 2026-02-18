@@ -41,6 +41,7 @@ transition: transform 1.4s ease, opacity 1.4s ease;
     stroke-linejoin: round;
 }
 
+
 @font-face {
     font-family: 'FilmotypeLaCrosse';
     src: url('FilmotypeLaCrosse.woff2') format('woff2');

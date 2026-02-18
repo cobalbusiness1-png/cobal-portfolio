@@ -5,9 +5,16 @@
 }
 
 body {
-    background: linear-gradient(135deg, #0b2d5a 0%, #6e7d8c 100%);
     font-family: sans-serif;
     overflow: hidden;
+
+    /* 透明感のある青グラデ */
+    background: linear-gradient(
+        135deg,
+        rgba(20, 60, 120, 0.95) 0%,
+        rgba(80, 140, 200, 0.75) 50%,
+        rgba(180, 220, 255, 0.6) 100%
+    );
 }
 
 /* ロゴ中央配置 */
@@ -22,47 +29,53 @@ body {
 #cobal-logo {
     width: 80%;
     max-width: 764px;
+    transition: transform 1.5s ease, opacity 1.5s ease;
 }
 
 /* ===== ロゴ描画アニメ ===== */
 
 .logo-stroke {
     fill: none;
-    stroke: #ffffff;
+    stroke: white;
     stroke-width: 3;
+
     stroke-dasharray: 2000;
     stroke-dashoffset: 2000;
+
     animation: draw 3s ease forwards;
 }
 
 .logo-fill {
-    fill: #ffffff;
+    fill: white;
     opacity: 0;
-    animation:
-        fillFade 1s ease forwards 3s,
-        moveUpFade 1.5s ease forwards 4s;
+    animation: fillFade 1s ease forwards 3s;
 }
 
+/* ペンで描く */
 @keyframes draw {
-    to { stroke-dashoffset: 0; }
-}
-
-@keyframes fillFade {
-    to { opacity: 1; }
-}
-
-@keyframes moveUpFade {
     to {
-        transform: translateY(-100px);
-        opacity: 0;
+        stroke-dashoffset: 0;
     }
+}
+
+/* 塗りフェードイン */
+@keyframes fillFade {
+    to {
+        opacity: 1;
+    }
+}
+
+/* ロゴ上スライド＋フェード */
+.logo-exit {
+    transform: translateY(-120px);
+    opacity: 0;
 }
 
 /* ===== メニュー ===== */
 
 .main-menu {
     position: absolute;
-    top: 50%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
@@ -73,8 +86,9 @@ body {
 .main-menu ul {
     list-style: none;
     display: flex;
-    gap: 40px;
-    font-size: 28px;
+    gap: 60px;
+    font-size: 30px;
+    letter-spacing: 2px;
 }
 
 .main-menu.show {

@@ -1,60 +1,43 @@
-body, html {
+/* リセット */
+* {
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    height: 100%;
+    box-sizing: border-box;
 }
 
-/* 背景：青と灰色のグラデーション */
-#intro-layer {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw;
+/* 背景イメージ維持 */
+.hero {
+    width: 100%;
     height: 100vh;
-    background: linear-gradient(135deg, #001f3f, #4a4a4a);
+    background: linear-gradient(135deg, #0b2d5a 0%, #6e7d8c 100%);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 100;
-    transition: opacity 1.5s ease;
+}
+
+/* ロゴサイズ調整 */
+.logo-container {
+    width: 80%;
+    max-width: 764px;
 }
 
 #cobal-logo {
-    width: 80%;
-    max-width: 800px;
+    width: 100%;
     height: auto;
+    overflow: visible;
 }
 
-/* 「ただの線」を防ぐための設定 */
-.draw-path {
-    fill: none;
-    stroke: white;
-    stroke-width: 1.2;
-    /* pathごとの長さに自動対応させるため、非常に大きな値を設定 */
-    stroke-dasharray: 5000;
-    stroke-dashoffset: 5000;
-    animation: writeLogo 6s ease-in-out forwards;
-}
+/* テキストスタイル（アウトライン完全排除） */
+.cobal-text {
+    /* 以前の変なアウトラインを完全に殺す */
+    fill: #ffffff !important;
+    stroke: none !important;
+    stroke-width: 0 !important;
 
-@keyframes writeLogo {
-    0% { stroke-dashoffset: 5000; fill: rgba(255,255,255,0); }
-    80% { stroke-dashoffset: 0; fill: rgba(255,255,255,0); }
-    100% { stroke-dashoffset: 0; fill: rgba(255,255,255,1); } /* 最後は中を白く塗る */
+    /* フォント指定 */
+    font-family: 'FilmotypeLaCrosse', 'Filmotype LaCrosse', cursive;
+    font-size: 200px;
+    
+    /* 念のための中抜き防止 */
+    paint-order: fill;
 }
-
-/* インデックス表示用 */
-#main-index {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #ffffff;
-    opacity: 0;
-    transition: opacity 1s ease;
-}
-
-#main-index.show {
-    opacity: 1;
-}
-
-.hidden { display: none; }

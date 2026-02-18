@@ -1,40 +1,36 @@
-@font-face {
-    font-family: 'Filmotype LaCrosse';
-    src: url('fonts/FilmotypeLaCrosse.woff2') format('woff2'); /* Git上のパスに合わせて適宜修正 */
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+body {
+    background: #1a1a1a; /* フォールバック */
+}
+
 .hero {
     width: 100%;
     height: 100vh;
-    background: radial-gradient(circle at center, #3a4b63 0%, #1c2635 100%); /* 画像のイメージに近いグラデ */
+    /* 背景画像のような深いグラデーション */
+    background: radial-gradient(circle at center, #2c3e50 0%, #000000 100%);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .logo-area {
-    width: 90%;
-    max-width: 764px;
+    width: 80%;
+    max-width: 800px;
 }
 
 #cobal-logo {
     width: 100%;
     height: auto;
-    overflow: visible;
 }
 
-/* ここが重要：アウトラインを完全に排除して塗りつぶす */
-.main-logo {
-    fill: #ffffff !important;   /* 確実に白で塗りつぶす */
-    stroke: none !important;    /* 線は絶対に出さない */
-    stroke-width: 0 !important;
-    font-family: 'Filmotype LaCrosse', cursive;
-    font-size: 200px;
-    paint-order: fill;          /* 塗りを最優先 */
+/* 以前の「変なアウトライン」が二度と出ないための強制設定 */
+.logo-paths {
+    fill: #ffffff !important;   /* 確実に中を白で埋める */
+    stroke: none !important;    /* 縁取り線を消す */
+    fill-rule: evenodd;        /* 重なったパスの内側を正しく抜く設定 */
 }

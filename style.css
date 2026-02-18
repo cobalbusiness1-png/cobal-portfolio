@@ -11,9 +11,24 @@ body {
 }
 
 .hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  animation: fadeIn 1.2s ease forwards;
+  position: fixed;
+  width: 100%;
+  background: linear-gradient(135deg, #dbeafe, #93c5fd);
+  z-index: 10;
+  animation: heroOut 1s ease forwards;
+  animation-delay: 1.5s;
 }
+
+<section class="content">
+  <h2>Works</h2>
+  <p>ここに作品一覧が入ります。</p>
+</section>
 
 h1 {
   font-size: 3.5rem;
@@ -41,3 +56,10 @@ h1 {
   }
 }
 
+@keyframes heroOut {
+  to {
+    opacity: 0;
+    transform: translateY(-50px);
+    pointer-events: none;
+  }
+}

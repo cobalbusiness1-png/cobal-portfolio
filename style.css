@@ -34,12 +34,13 @@ transition: transform 1.4s ease, opacity 1.4s ease;
 /* ===== 白色化 ===== */
 
 #logo-text {
-fill: none;
-stroke: white;
-stroke-width: 3;
-stroke-linecap: round;
-stroke-linejoin: round;
+    fill: white;
+    stroke: white;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
+
 
 /* メニュー */
 

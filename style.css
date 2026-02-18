@@ -3,7 +3,6 @@ body, html {
     padding: 0;
     overflow: hidden;
     height: 100%;
-    font-family: sans-serif;
 }
 
 /* 背景：青と灰色のグラデーション */
@@ -21,34 +20,35 @@ body, html {
 }
 
 #cobal-logo {
-    width: 80%; /* 画面幅に合わせて調整 */
+    width: 80%;
     max-width: 800px;
+    height: auto;
 }
 
-/* 全パスにアニメーションを適用 */
+/* 「ただの線」を防ぐための設定 */
 .draw-path {
-    fill: none; /* 最初は塗りつぶさない */
-    stroke: white; /* 線の色 */
-    stroke-width: 1.5;
-    stroke-dasharray: 2000; /* ロゴの複雑さに対応できるよう大きめの値に設定 */
-    stroke-dashoffset: 2000;
-    animation: writeLogo 5s ease-in-out forwards;
+    fill: none;
+    stroke: white;
+    stroke-width: 1.2;
+    /* pathごとの長さに自動対応させるため、非常に大きな値を設定 */
+    stroke-dasharray: 5000;
+    stroke-dashoffset: 5000;
+    animation: writeLogo 6s ease-in-out forwards;
 }
 
 @keyframes writeLogo {
-    0% { stroke-dashoffset: 2000; fill: rgba(255,255,255,0); }
-    70% { stroke-dashoffset: 0; fill: rgba(255,255,255,0); }
-    100% { stroke-dashoffset: 0; fill: rgba(255,255,255,1); } /* 最後は塗りつぶす */
+    0% { stroke-dashoffset: 5000; fill: rgba(255,255,255,0); }
+    80% { stroke-dashoffset: 0; fill: rgba(255,255,255,0); }
+    100% { stroke-dashoffset: 0; fill: rgba(255,255,255,1); } /* 最後は中を白く塗る */
 }
 
-/* インデックス表示 */
+/* インデックス表示用 */
 #main-index {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #f0f0f0;
+    background: #ffffff;
     opacity: 0;
     transition: opacity 1s ease;
 }

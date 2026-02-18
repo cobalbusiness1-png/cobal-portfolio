@@ -9,13 +9,13 @@
 
 body{
 height:100vh;
-overflow:hidden;
 display:flex;
 justify-content:center;
 align-items:center;
+overflow:hidden;
 font-family:sans-serif;
 
-/* 透明感のある青グラデ */
+/* 透明感ブルー */
 background:linear-gradient(
 135deg,
 rgba(30,70,130,0.95) 0%,
@@ -27,7 +27,7 @@ rgba(200,230,255,0.6) 100%
 #cobal-logo{
 width:80%;
 max-width:754px;
-transition:transform 1.2s ease,opacity 1.2s ease;
+animation:logoUp 1.2s ease 4s forwards;
 }
 
 #cobal-logo path{
@@ -36,6 +36,22 @@ stroke:white;
 stroke-width:2;
 stroke-linecap:round;
 stroke-linejoin:round;
+stroke-dasharray:2000;
+stroke-dashoffset:2000;
+animation:draw 3s ease forwards;
+}
+
+/* 左から描画 */
+@keyframes draw{
+to{stroke-dashoffset:0;}
+}
+
+/* 上へスライド＋フェード */
+@keyframes logoUp{
+to{
+transform:translateY(-120px);
+opacity:0;
+}
 }
 
 .menu{
@@ -44,14 +60,17 @@ bottom:20%;
 left:50%;
 transform:translateX(-50%);
 opacity:0;
-transition:opacity 1s ease;
 color:white;
 font-size:28px;
 letter-spacing:2px;
 display:flex;
 gap:60px;
+animation:menuIn 1s ease 5s forwards;
 }
-.menu.show{opacity:1;}
+
+@keyframes menuIn{
+to{opacity:1;}
+}
 </style>
 </head>
 
@@ -59,53 +78,15 @@ gap:60px;
 
 <svg id="cobal-logo" viewBox="0 0 754.18 150.6">
 
-<!-- ★ あなたの path 群をここに貼る（fill削除済み） -->
+<!-- あなたの path 群をここに貼る（fill削除済み） -->
 
 </svg>
 
-<div class="menu" id="menu">
+<div class="menu">
 <div>About</div>
 <div>Works</div>
 <div>Contact</div>
 </div>
-
-<script>
-const paths=document.querySelectorAll("#cobal-logo path");
-const logo=document.getElementById("cobal-logo");
-const menu=document.getElementById("menu");
-
-window.onload=()=>{
-
-/* 初期状態：全パス隠す */
-paths.forEach(p=>{
-const len=p.getTotalLength();
-p.style.strokeDasharray=len;
-p.style.strokeDashoffset=len;
-});
-
-/* 左から順に描画 */
-let delay=0;
-
-paths.forEach((p,i)=>{
-const len=p.getTotalLength();
-p.style.transition=`stroke-dashoffset 0.8s ease ${delay}s`;
-p.style.strokeDashoffset=0;
-delay+=0.12;
-});
-
-/* 描画後スライド */
-setTimeout(()=>{
-logo.style.transform="translateY(-120px)";
-logo.style.opacity="0";
-
-setTimeout(()=>{
-menu.classList.add("show");
-},1000);
-
-},(delay+0.8)*1000);
-
-};
-</script>
 
 </body>
 </html>

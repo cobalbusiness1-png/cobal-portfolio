@@ -1,29 +1,42 @@
-const text = document.getElementById("logo-text");
+const paths = document.querySelectorAll("#cobal-logo path");
 const logo = document.getElementById("cobal-logo");
 const menu = document.querySelector(".main-menu");
 
 window.addEventListener("load", () => {
 
-    const length = text.getBBox().width;
+let totalLength = 0;
 
-    text.style.strokeDasharray = length;
-    text.style.strokeDashoffset = length;
+/* 各パスの長さを取得 */
+paths.forEach(path => {
+    const length = path.getTotalLength();
+    totalLength += length;
 
-    text.style.transition = "stroke-dashoffset 2.5s ease";
+    path.style.strokeDasharray = length;
+    path.style.strokeDashoffset = length;
+});
 
-    requestAnimationFrame(() => {
-        text.style.strokeDashoffset = "0";
-    });
+/* 左から順番に描画 */
+let delay = 0;
+
+paths.forEach(path => {
+    const length = path.getTotalLength();
+
+    path.style.transition = `stroke-dashoffset 0.8s ease ${delay}s`;
+    path.style.strokeDashoffset = "0";
+
+    delay += 0.15;
+});
+
+/* 描画終了後 */
+setTimeout(() => {
+
+    logo.style.transform = "translateY(-120px)";
+    logo.style.opacity = "0";
 
     setTimeout(() => {
+        menu.classList.add("show");
+    },1200);
 
-        logo.style.transform = "translateY(-120px)";
-        logo.style.opacity = "0";
-
-        setTimeout(() => {
-            menu.classList.add("show");
-        }, 1200);
-
-    }, 2600);
+}, delay*1000 + 800);
 
 });

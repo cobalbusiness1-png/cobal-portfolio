@@ -28,12 +28,15 @@ body {
 }
 
 .hero path {
-  fill: none;
   stroke: #1e3a8a;
   stroke-width: 3;
   stroke-dasharray: 2000;
   stroke-dashoffset: 2000;
-  animation: draw 3s ease forwards;
+  animation: draw 2.5s ease forwards;
+}
+
+.hero {
+  animation: fadeIn 0.5s ease forwards;
 }
 
 @keyframes draw {
@@ -41,3 +44,4 @@ body {
     stroke-dashoffset: 0;
   }
 }
+

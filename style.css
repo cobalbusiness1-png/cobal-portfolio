@@ -4,45 +4,38 @@ body {
   background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
 }
 
-/* ヒーロー表示 */
+/* ヒーロー */
 .hero {
-  height: 100vh;
+  position: fixed;
+  inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: fadeIn 1.2s ease forwards,
-             fadeOut 1s ease forwards;
-  animation-delay: 0s, 2.5s;
+  background: linear-gradient(135deg, #dbeafe, #93c5fd);
+  z-index: 10;
+
+  animation: heroOut 1.2s ease forwards;
+  animation-delay: 2s;
 }
 
-/* ロゴサイズ */
-.hero svg {
+/* ロゴサイズ調整 */
+.logo svg {
   width: 70%;
-  max-width: 900px;
-}
-
-/* フェード */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-  }
+  max-width: 800px;
 }
 
 /* 下のコンテンツ */
 .content {
-  min-height: 100vh;
-  padding: 120px 20px;
-  text-align: center;
+  padding-top: 100vh;
   background: white;
+  padding-bottom: 120px;
+  text-align: center;
+}
+
+/* フェードアウト */
+@keyframes heroOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
 }

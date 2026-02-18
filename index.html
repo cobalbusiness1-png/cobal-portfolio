@@ -1,34 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
+<title>Cobal Studio</title>
+
 <style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
 body{
-margin:0;
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:#204a87;
+overflow:hidden;
+font-family:sans-serif;
+background:linear-gradient(
+135deg,
+rgba(30,70,130,0.95) 0%,
+rgba(90,160,230,0.75) 50%,
+rgba(200,230,255,0.6) 100%
+);
 }
 
-svg{
-width:700px;
-background:red; /* ← 枠確認 */
+#cobal-logo{
+width:80%;
+max-width:900px;
+transition:transform 1.2s ease,opacity 1.2s ease;
 }
 
-path{
-fill:white;
+#cobal-logo path{
+fill:none;
+stroke:white;
+stroke-width:2;
+stroke-linecap:round;
+stroke-linejoin:round;
 }
+
+.menu{
+position:absolute;
+bottom:20%;
+left:50%;
+transform:translateX(-50%);
+opacity:0;
+transition:opacity 1s ease;
+color:white;
+font-size:28px;
+letter-spacing:2px;
+display:flex;
+gap:60px;
+}
+.menu.show{opacity:1;}
 </style>
 </head>
+
 <body>
 
-<svg viewBox="0 0 754.18 150.6">
+<svg id="cobal-logo" viewBox="0 0 754.18 150.6">
 
+<!-- あなたのSVGパス全部 -->
 <path d="M31.6,150.2c-19.2,0-31.6-8.8-31.6-25.4C0,76,107.2,5.8,141.4,5.8c12.4,0,16.2,9.4,16.2,14.6,0,20.4-59.8,53.8-70.8,53.8-2,0-3.2-1.2-3.2-2.8,0-1,.4-1.6,3.4-2.6,26-9.6,64.6-40,64.6-50.8,0-3-3-4.8-8.8-4.8C105.8,13.2,6.4,82.6,6.4,126.2c0,14.4,13,18,24.4,18,46.6,0,74-40.4,78.6-40.4.6,0,1.6.6,1.6,1.8,0,2.4-1.2,3-5.2,7.6-15.6,17.6-46.4,37-74.2,37Z"/>
+<path d="M142.6,98.6c0,13-25.4,45.6-41.8,45.6-6.4,0-9.8-4.8-9.8-10.8,0-16.6,26.8-45.4,42.4-45.4,2.2,0,6,.8,6,4.6,2.4.4,3.2,3.8,3.2,6Z"/>
+<path d="M188,92.6c5.2,0,8.6,2.8,8.6,7.8,0,14-27.4,47.2-43.8,47.2-6.6,0-10.6-5.4-10.6-10.8,0-12.4,21-45.4,40.6-72Z"/>
+<path d="M559.39,18.4c0-5.8-6.6-11.2-26.6-11.2-51,0-104,35.4-104,56.2,0,24.8,74.8,31.8,74.8,61Z"/>
+<path d="M538.79,80.2c-4.8,0-13.8.4-19.2.4-2,0-3.2-.8-3.2-2,0-2.2,1.8-2.8,3.8-2.8,4.2,0,16.6-.2,30.6-.2Z"/>
+<path d="M754.18,98.6c0,13-25.4,45.6-41.8,45.6-6.4,0-9.8-4.8-9.8-10.8,0-16.6,26.8-45.4,42.4-45.4Z"/>
 
 </svg>
+
+<div class="menu" id="menu">
+<div>About</div>
+<div>Works</div>
+<div>Contact</div>
+</div>
+
+<script>
+const paths=document.querySelectorAll("#cobal-logo path");
+const logo=document.getElementById("cobal-logo");
+const menu=document.getElementById("menu");
+
+window.onload=()=>{
+
+let lastDelay=0;
+
+paths.forEach((path,i)=>{
+const len=path.getTotalLength();
+path.style.strokeDasharray=len;
+path.style.strokeDashoffset=len;
+const delay=i*0.12;
+lastDelay=delay;
+path.style.transition=`stroke-dashoffset 1.2s ease ${delay}s`;
+path.style.strokeDashoffset=0;
+});
+
+setTimeout(()=>{
+logo.style.transform="translateY(-120px)";
+logo.style.opacity="0";
+
+setTimeout(()=>{
+menu.classList.add("show");
+},1000);
+
+},(lastDelay+1.2)*1000);
+
+};
+</script>
 
 </body>
 </html>

@@ -1,23 +1,25 @@
-/* リセット */
+@font-face {
+    font-family: 'Filmotype LaCrosse';
+    src: url('fonts/FilmotypeLaCrosse.woff2') format('woff2'); /* Git上のパスに合わせて適宜修正 */
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* 背景イメージ維持 */
 .hero {
     width: 100%;
     height: 100vh;
-    background: linear-gradient(135deg, #0b2d5a 0%, #6e7d8c 100%);
+    background: radial-gradient(circle at center, #3a4b63 0%, #1c2635 100%); /* 画像のイメージに近いグラデ */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* ロゴサイズ調整 */
-.logo-container {
-    width: 80%;
+.logo-area {
+    width: 90%;
     max-width: 764px;
 }
 
@@ -27,17 +29,12 @@
     overflow: visible;
 }
 
-/* テキストスタイル（アウトライン完全排除） */
-.cobal-text {
-    /* 以前の変なアウトラインを完全に殺す */
-    fill: #ffffff !important;
-    stroke: none !important;
+/* ここが重要：アウトラインを完全に排除して塗りつぶす */
+.main-logo {
+    fill: #ffffff !important;   /* 確実に白で塗りつぶす */
+    stroke: none !important;    /* 線は絶対に出さない */
     stroke-width: 0 !important;
-
-    /* フォント指定 */
-    font-family: 'FilmotypeLaCrosse', 'Filmotype LaCrosse', cursive;
+    font-family: 'Filmotype LaCrosse', cursive;
     font-size: 200px;
-    
-    /* 念のための中抜き防止 */
-    paint-order: fill;
+    paint-order: fill;          /* 塗りを最優先 */
 }

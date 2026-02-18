@@ -1,22 +1,28 @@
-const text = document.getElementById("logo-text");
 const logo = document.getElementById("cobal-logo");
 const menu = document.querySelector(".main-menu");
+const tspans = document.querySelectorAll("#logo-text tspan");
 
-/* フォント読み込み完了後に実行 */
 document.fonts.ready.then(() => {
 
-    const length = text.getComputedTextLength();
+    let totalDelay = 0;
 
-    text.style.strokeDasharray = length;
-    text.style.strokeDashoffset = length;
+    tspans.forEach((tspan, index) => {
 
-    /* ペン描画 */
-    setTimeout(() => {
-        text.style.transition = "stroke-dashoffset 3s ease";
-        text.style.strokeDashoffset = "0";
-    }, 200);
+        const length = tspan.getComputedTextLength();
 
-    /* 描画後スライド */
+        tspan.style.strokeDasharray = length;
+        tspan.style.strokeDashoffset = length;
+
+        tspan.style.transition = "stroke-dashoffset 1s ease";
+
+        setTimeout(() => {
+            tspan.style.strokeDashoffset = "0";
+        }, totalDelay);
+
+        totalDelay += 900;
+    });
+
+    /* 全描画後スライド */
     setTimeout(() => {
         logo.style.transition = "transform 1.4s ease, opacity 1.4s ease";
         logo.style.transform = "translateY(-120px)";
@@ -26,6 +32,6 @@ document.fonts.ready.then(() => {
             menu.classList.add("show");
         }, 1400);
 
-    }, 3300);
+    }, totalDelay + 300);
 
 });

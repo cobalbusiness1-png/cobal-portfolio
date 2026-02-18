@@ -4,30 +4,27 @@ const menu = document.querySelector(".main-menu");
 
 window.addEventListener("load", () => {
 
-let totalLength = 0;
+let delay = 0;
 
-/* 各パスの長さを取得 */
+/* すべてのパスを非表示状態に */
 paths.forEach(path => {
     const length = path.getTotalLength();
-    totalLength += length;
-
     path.style.strokeDasharray = length;
     path.style.strokeDashoffset = length;
 });
 
-/* 左から順番に描画 */
-let delay = 0;
-
+/* 左から順に描画 */
 paths.forEach(path => {
+
     const length = path.getTotalLength();
 
     path.style.transition = `stroke-dashoffset 0.8s ease ${delay}s`;
     path.style.strokeDashoffset = "0";
 
-    delay += 0.15;
+    delay += 0.12;  // 描画間隔
 });
 
-/* 描画終了後 */
+/* 描画完了後にスライド */
 setTimeout(() => {
 
     logo.style.transform = "translateY(-120px)";

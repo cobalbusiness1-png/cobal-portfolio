@@ -25,11 +25,6 @@ body {
   animation-delay: 1.5s;
 }
 
-<section class="content">
-  <h2>Works</h2>
-  <p>ここに作品一覧が入ります。</p>
-</section>
-
 h1 {
   font-size: 80px;
   color: #1e3a8a;

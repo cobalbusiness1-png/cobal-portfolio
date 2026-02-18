@@ -1,94 +1,34 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Cobal Studio</title>
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-
 body{
+margin:0;
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-overflow:hidden;
-font-family:sans-serif;
-
-/* 透明感ブルー */
-background:linear-gradient(
-135deg,
-rgba(30,70,130,0.95) 0%,
-rgba(90,160,230,0.75) 50%,
-rgba(200,230,255,0.6) 100%
-);
+background:#204a87;
 }
 
-#cobal-logo{
-width:80%;
-max-width:754px;
-animation:logoUp 1.2s ease 4s forwards;
+svg{
+width:700px;
+background:red; /* ← 枠確認 */
 }
 
-#cobal-logo path{
-fill:none;
-stroke:white;
-stroke-width:2;
-stroke-linecap:round;
-stroke-linejoin:round;
-stroke-dasharray:2000;
-stroke-dashoffset:2000;
-animation:draw 3s ease forwards;
-}
-
-/* 左から描画 */
-@keyframes draw{
-to{stroke-dashoffset:0;}
-}
-
-/* 上へスライド＋フェード */
-@keyframes logoUp{
-to{
-transform:translateY(-120px);
-opacity:0;
-}
-}
-
-.menu{
-position:absolute;
-bottom:20%;
-left:50%;
-transform:translateX(-50%);
-opacity:0;
-color:white;
-font-size:28px;
-letter-spacing:2px;
-display:flex;
-gap:60px;
-animation:menuIn 1s ease 5s forwards;
-}
-
-@keyframes menuIn{
-to{opacity:1;}
+path{
+fill:white;
 }
 </style>
 </head>
-
 <body>
 
-<svg id="cobal-logo" viewBox="0 0 754.18 150.6">
+<svg viewBox="0 0 754.18 150.6">
 
-<path d="M31.6,150.2c-19.2,0-31.6-8.8-31.6-25.4C0,76,107.2,5.8..." />
-<path d="M142.6,98.6c0,13-25.4,45.6-41.8,45.6..." />
-<path d="M188,92.6c5.2,0,8.6,2.8,8.6,7.8..." />
+<path d="M31.6,150.2c-19.2,0-31.6-8.8-31.6-25.4C0,76,107.2,5.8,141.4,5.8c12.4,0,16.2,9.4,16.2,14.6,0,20.4-59.8,53.8-70.8,53.8-2,0-3.2-1.2-3.2-2.8,0-1,.4-1.6,3.4-2.6,26-9.6,64.6-40,64.6-50.8,0-3-3-4.8-8.8-4.8C105.8,13.2,6.4,82.6,6.4,126.2c0,14.4,13,18,24.4,18,46.6,0,74-40.4,78.6-40.4.6,0,1.6.6,1.6,1.8,0,2.4-1.2,3-5.2,7.6-15.6,17.6-46.4,37-74.2,37Z"/>
 
 </svg>
-
-<div class="menu">
-<div>About</div>
-<div>Works</div>
-<div>Contact</div>
-</div>
 
 </body>
 </html>

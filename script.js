@@ -1,24 +1,36 @@
-const logoStroke = document.querySelector('.logo-stroke');
-const logoFill = document.querySelector('.logo-fill');
-const logo = document.getElementById('cobal-logo');
-const menu = document.querySelector('.main-menu');
+const text = document.getElementById("logo-text");
+const logo = document.getElementById("cobal-logo");
+const menu = document.querySelector(".main-menu");
 
-/* 塗りアニメ終了後にロゴを上へスライド */
-logoFill.addEventListener('animationend', (e) => {
+/* SVG長さ取得 */
+const length = text.getComputedTextLength();
 
-    if (e.animationName === "fillFade") {
+/* 初期状態（見えない） */
+text.style.strokeDasharray = length;
+text.style.strokeDashoffset = length;
 
-        // 少し待ってから上へ移動
+/* ペン描画アニメ */
+setTimeout(() => {
+    text.style.transition = "stroke-dashoffset 3s ease";
+    text.style.strokeDashoffset = "0";
+}, 300);
+
+/* 描画後処理 */
+setTimeout(() => {
+
+    /* 白で塗る */
+    text.style.fill = "white";
+
+    /* 少し待って上へ */
+    setTimeout(() => {
+        logo.style.transform = "translateY(-120px)";
+        logo.style.opacity = "0";
+
+        /* メニュー表示 */
         setTimeout(() => {
-            logo.classList.add('logo-exit');
+            menu.classList.add("show");
+        }, 1400);
 
-            // ロゴ移動後にメニュー表示
-            setTimeout(() => {
-                menu.classList.add('show');
-            }, 1500);
+    }, 800);
 
-        }, 800);
-    }
-});
-
-console.log("Cobal Studio Animation System Active.");
+}, 3300);

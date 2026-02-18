@@ -1,33 +1,29 @@
+/* ===== 基本 ===== */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
-  overflow: hidden;
-  background-attachment: fixed;
 }
 
+/* ===== ヒーロー ===== */
 .hero {
-  height: 100vh;
+  position: fixed;
+  inset: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  position: fixed;
-  width: 100%;
   background: linear-gradient(135deg, #dbeafe, #93c5fd);
   z-index: 10;
   animation: heroOut 1s ease forwards;
   animation-delay: 1.5s;
 }
 
+/* ロゴ */
 h1 {
   font-size: 80px;
   color: #1e3a8a;
+  margin: 0;
 }
 
 .hero p {
@@ -37,27 +33,19 @@ h1 {
   letter-spacing: 1px;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* フェードアウト */
 @keyframes heroOut {
   to {
     opacity: 0;
-    transform: translateY(-50px);
-    pointer-events: none;
+    transform: translateY(-40px);
+    visibility: hidden;
   }
 }
 
+/* ===== 下のコンテンツ ===== */
 .content {
   background: white;
   padding: 120px 20px;
   text-align: center;
+  margin-top: 100vh; /* ← ヒーロー分ずらす */
 }

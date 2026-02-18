@@ -1,11 +1,10 @@
-/* ===== 基本 ===== */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: white; /* ← 青消す */
+  background: white;
 }
 
-/* ===== ヒーロー ===== */
+/* ヒーロー */
 .hero {
   position: fixed;
   inset: 0;
@@ -27,18 +26,27 @@ h1 {
 
 .hero p {
   margin-top: 12px;
-  color: #666;
+  color: #555;
 }
 
-/* フェードアウト */
+/* ここ重要 */
 @keyframes heroOut {
   to {
     opacity: 0;
-    visibility: hidden;
+    transform: translateY(-30px);
   }
 }
 
-/* ===== 下コンテンツ ===== */
+/* ヒーローのアニメ終わったら無効化 */
+.hero {
+  animation-fill-mode: forwards;
+}
+
+.hero {
+  pointer-events: none;
+}
+
+/* コンテンツ */
 .content {
   padding: 120px 20px;
   text-align: center;

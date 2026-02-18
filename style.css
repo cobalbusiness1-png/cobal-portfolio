@@ -1,41 +1,44 @@
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
-/* ヒーロー */
-.hero {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #dbeafe, #93c5fd);
-  z-index: 10;
-
-  animation: heroOut 1.2s ease forwards;
-  animation-delay: 2s;
+/* 背景：青と灰色のグラデーション */
+#intro-layer {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #003366, #808080);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1.5s ease; /* フェードアウト用 */
+    z-index: 10;
 }
 
-/* ロゴサイズ調整 */
-.logo svg {
-  width: 70%;
-  max-width: 800px;
+/* SVG手書きアニメーション */
+.draw-path {
+    fill: none;
+    stroke: white; /* ペンの色 */
+    stroke-width: 2;
+    stroke-dasharray: 1000; /* パスの長さに合わせて調整 */
+    stroke-dashoffset: 1000;
+    animation: write 3s ease-in-out forwards;
 }
 
-/* 下のコンテンツ */
-.content {
-  padding-top: 100vh;
-  background: white;
-  padding-bottom: 120px;
-  text-align: center;
+@keyframes write {
+    to { stroke-dashoffset: 0; }
 }
 
-/* フェードアウト */
-@keyframes heroOut {
-  to {
+/* インデックスの初期状態（隠しておく） */
+#main-index {
     opacity: 0;
-    visibility: hidden;
-  }
+    transition: opacity 1s ease;
 }
+
+#main-index.show {
+    opacity: 1;
+}
+
+.hidden { display: none; }

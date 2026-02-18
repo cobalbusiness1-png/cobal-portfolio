@@ -4,40 +4,34 @@
     box-sizing: border-box;
 }
 
-/* 青から灰色へのグラデーション背景 */
+/* 4枚目の画像を再現した、青から灰色へのグラデーション */
 .hero {
     width: 100%;
     height: 100vh;
-    /* 左上から右下にかけて青から灰色へ変化 */
     background: linear-gradient(135deg, #0b2d5a 0%, #6e7d8c 100%);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* ロゴのスタイル設定 */
 #cobal-logo {
     width: 80%;
     max-width: 764px;
     height: auto;
-    /* 確実に中を白で塗りつぶし、線を消去 */
-    fill: #ffffff !important;
-    stroke: none !important;
     overflow: visible;
 }
 
-/* フェードイン・フェードアウトの無限ループ（6秒周期） */
-.fade-animation {
-    animation: fadeInOut 6s ease-in-out infinite;
+/* ロゴの塗りつぶしとアニメーション */
+.logo-fade {
+    fill: #ffffff !important;   /* 確実に白で塗りつぶし */
+    stroke: none !important;    /* アウトラインを消去 */
+    animation: fadeLoop 6s ease-in-out infinite;
 }
 
-@keyframes fadeInOut {
-    0%, 100% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
+/* フェードイン・フェードアウトのループ */
+@keyframes fadeLoop {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
 }
 
 /* フォント指定 */

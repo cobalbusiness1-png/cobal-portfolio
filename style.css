@@ -1,54 +1,28 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: white;
-}
-
-/* ヒーロー */
-.hero {
-  position: fixed;
-  inset: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
-  z-index: 10;
-  animation: heroOut 1s ease forwards;
-  animation-delay: 1.5s;
 }
 
-h1 {
-  font-size: 80px;
-  color: #1e3a8a;
-  margin: 0;
+.hero svg {
+  width: 70%;
+  max-width: 800px;
 }
 
-.hero p {
-  margin-top: 12px;
-  color: #555;
+.hero path {
+  fill: none;
+  stroke: #1e3a8a;
+  stroke-width: 3;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: draw 3s ease forwards;
 }
 
-/* ここ重要 */
-@keyframes heroOut {
+@keyframes draw {
   to {
-    opacity: 0;
-    transform: translateY(-30px);
+    stroke-dashoffset: 0;
   }
-}
-
-/* ヒーローのアニメ終わったら無効化 */
-.hero {
-  animation-fill-mode: forwards;
-}
-
-.hero {
-  pointer-events: none;
-}
-
-/* コンテンツ */
-.content {
-  padding: 120px 20px;
-  text-align: center;
-  min-height: 100vh;
 }

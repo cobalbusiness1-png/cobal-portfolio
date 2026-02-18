@@ -1,4 +1,2 @@
-// アニメーションはCSSで制御されています
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("Cobal Studio Logo Animation Ready");
-});
+// アニメーションはCSSで制御しています。
+console.log("Cobal Studio Animation System Active.");

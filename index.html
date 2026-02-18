@@ -3,26 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <title>Cobal Studio</title>
-<link rel="stylesheet" href="style.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:sans-serif;
+
+/* 透明感のある青グラデ */
+background:linear-gradient(
+135deg,
+rgba(30,70,130,0.95) 0%,
+rgba(90,160,230,0.75) 50%,
+rgba(200,230,255,0.6) 100%
+);
+}
+
+#cobal-logo{
+width:80%;
+max-width:754px;
+transition:transform 1.2s ease,opacity 1.2s ease;
+}
+
+#cobal-logo path{
+fill:none;
+stroke:white;
+stroke-width:2;
+stroke-linecap:round;
+stroke-linejoin:round;
+}
+
+.menu{
+position:absolute;
+bottom:20%;
+left:50%;
+transform:translateX(-50%);
+opacity:0;
+transition:opacity 1s ease;
+color:white;
+font-size:28px;
+letter-spacing:2px;
+display:flex;
+gap:60px;
+}
+.menu.show{opacity:1;}
+</style>
 </head>
+
 <body>
 
-<div class="hero">
 <svg id="cobal-logo" viewBox="0 0 754.18 150.6">
 
-    <!-- ★ あなたの <path> 群だけをここに貼る（fill属性は削除） -->
+<!-- ★ あなたの path 群をここに貼る（fill削除済み） -->
 
 </svg>
+
+<div class="menu" id="menu">
+<div>About</div>
+<div>Works</div>
+<div>Contact</div>
 </div>
 
-<nav class="main-menu">
-<ul>
-<li>About</li>
-<li>Works</li>
-<li>Contact</li>
-</ul>
-</nav>
+<script>
+const paths=document.querySelectorAll("#cobal-logo path");
+const logo=document.getElementById("cobal-logo");
+const menu=document.getElementById("menu");
 
-<script src="script.js"></script>
+window.onload=()=>{
+
+/* 初期状態：全パス隠す */
+paths.forEach(p=>{
+const len=p.getTotalLength();
+p.style.strokeDasharray=len;
+p.style.strokeDashoffset=len;
+});
+
+/* 左から順に描画 */
+let delay=0;
+
+paths.forEach((p,i)=>{
+const len=p.getTotalLength();
+p.style.transition=`stroke-dashoffset 0.8s ease ${delay}s`;
+p.style.strokeDashoffset=0;
+delay+=0.12;
+});
+
+/* 描画後スライド */
+setTimeout(()=>{
+logo.style.transform="translateY(-120px)";
+logo.style.opacity="0";
+
+setTimeout(()=>{
+menu.classList.add("show");
+},1000);
+
+},(delay+0.8)*1000);
+
+};
+</script>
+
 </body>
 </html>

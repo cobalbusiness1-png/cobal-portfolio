@@ -2,37 +2,53 @@ body, html {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    height: 100%;
+    font-family: sans-serif;
 }
 
 /* 背景：青と灰色のグラデーション */
 #intro-layer {
     position: fixed;
+    top: 0; left: 0;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(135deg, #003366, #808080);
+    background: linear-gradient(135deg, #001f3f, #4a4a4a);
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 1.5s ease; /* フェードアウト用 */
-    z-index: 10;
+    z-index: 100;
+    transition: opacity 1.5s ease;
 }
 
-/* SVG手書きアニメーション */
+#cobal-logo {
+    width: 80%; /* 画面幅に合わせて調整 */
+    max-width: 800px;
+}
+
+/* 全パスにアニメーションを適用 */
 .draw-path {
-    fill: none;
-    stroke: white; /* ペンの色 */
-    stroke-width: 2;
-    stroke-dasharray: 1000; /* パスの長さに合わせて調整 */
-    stroke-dashoffset: 1000;
-    animation: write 3s ease-in-out forwards;
+    fill: none; /* 最初は塗りつぶさない */
+    stroke: white; /* 線の色 */
+    stroke-width: 1.5;
+    stroke-dasharray: 2000; /* ロゴの複雑さに対応できるよう大きめの値に設定 */
+    stroke-dashoffset: 2000;
+    animation: writeLogo 5s ease-in-out forwards;
 }
 
-@keyframes write {
-    to { stroke-dashoffset: 0; }
+@keyframes writeLogo {
+    0% { stroke-dashoffset: 2000; fill: rgba(255,255,255,0); }
+    70% { stroke-dashoffset: 0; fill: rgba(255,255,255,0); }
+    100% { stroke-dashoffset: 0; fill: rgba(255,255,255,1); } /* 最後は塗りつぶす */
 }
 
-/* インデックスの初期状態（隠しておく） */
+/* インデックス表示 */
 #main-index {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f0f0f0;
     opacity: 0;
     transition: opacity 1s ease;
 }

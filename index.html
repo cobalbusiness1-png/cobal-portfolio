@@ -1,112 +1,29 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <link rel="stylesheet" href="style.css">
 <meta charset="UTF-8">
 <title>Cobal Studio</title>
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-
-body{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
-font-family:sans-serif;
-background:linear-gradient(
-135deg,
-rgba(30,70,130,0.95) 0%,
-rgba(90,160,230,0.75) 50%,
-rgba(200,230,255,0.6) 100%
-);
-}
-
-#cobal-logo{
-width:80%;
-max-width:900px;
-transition:transform 1.2s ease,opacity 1.2s ease;
-}
-
-#cobal-logo path{
-fill:none;
-stroke:white;
-stroke-width:2;
-stroke-linecap:round;
-stroke-linejoin:round;
-}
-
-.menu{
-position:absolute;
-bottom:20%;
-left:50%;
-transform:translateX(-50%);
-opacity:0;
-transition:opacity 1s ease;
-color:white;
-font-size:28px;
-letter-spacing:2px;
-display:flex;
-gap:60px;
-}
-
-.menu.show{opacity:1;}
-
-.hero{
-position:relative;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div class="hero">
 
-<svg id="cobal-logo" viewBox="0 0 754.18 150.6">
-<!-- パスはそのまま -->
-<path d="M31.6,150.2c-19.2..."/>
-</svg>
+  <div class="hero-bg"></div>
 
-<div class="menu" id="menu">
-<div>About</div>
-<div>Works</div>
-<div>Contact</div>
+  <svg id="cobal-logo" viewBox="0 0 754.18 150.6">
+    <!-- パス -->
+  </svg>
+
+  <div class="menu" id="menu">
+    <div>About</div>
+    <div>Works</div>
+    <div>Contact</div>
+  </div>
+
 </div>
 
-</div>
-
-<script>
-const paths=document.querySelectorAll("#cobal-logo path");
-const logo=document.getElementById("cobal-logo");
-const menu=document.getElementById("menu");
-
-window.onload=()=>{
-
-let lastDelay=0;
-
-paths.forEach((path,i)=>{
-const len=path.getTotalLength();
-path.style.strokeDasharray=len;
-path.style.strokeDashoffset=len;
-const delay=i*0.12;
-lastDelay=delay;
-path.style.transition=`stroke-dashoffset 1.2s ease ${delay}s`;
-path.style.strokeDashoffset=0;
-});
-
-setTimeout(()=>{
-logo.style.transform="translateY(-120px)";
-logo.style.opacity="0";
-
-setTimeout(()=>{
-menu.classList.add("show");
-},1000);
-
-},(lastDelay+1.2)*1000);
-
-};
-</script>
+<script src="script.js"></script>
 
 </body>
-</html>

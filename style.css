@@ -20,8 +20,9 @@
 
 .menu{
   position:absolute;
-  left:6%;                 /* 左へ */
-  top:55%;                 /* 少し下げる */
+  left:6%;          /* ← これ */
+  right:auto;       /* ← これ重要（打ち消し） */
+  top:50%;
   transform:translateY(-50%);
   z-index:2;
 

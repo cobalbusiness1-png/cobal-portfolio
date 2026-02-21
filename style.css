@@ -30,16 +30,16 @@
 }
 
 .menu div{
-  font-size:42px;           /* ←大きくする */
-  margin:25px 0;
+  font-size:60px;
+  margin:35px 0;
   cursor:pointer;
-  transition:all 0.35s ease;
-  display:inline-block;
+  transition:transform 0.3s ease, letter-spacing 0.3s ease;
+  display:block;              /* ←ここ重要 */
+  transform-origin:right center; /* 右基準で拡大 */
 }
 
-/* ホバー時 */
 .menu div:hover{
-  transform:scale(1.2);     /* 拡大 */
-  letter-spacing:6px;       /* 文字間広げる */
-  text-shadow:0 0 15px rgba(255,255,255,0.6);
+  transform:scale(1.4);
+  letter-spacing:8px;
+  text-shadow:0 0 25px rgba(255,255,255,0.8);
 }

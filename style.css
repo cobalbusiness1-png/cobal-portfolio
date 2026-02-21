@@ -20,26 +20,32 @@
 
 .menu{
   position:absolute;
-  right:8%;
-  top:50%;
+  left:6%;                 /* 左へ */
+  top:55%;                 /* 少し下げる */
   transform:translateY(-50%);
   z-index:2;
+
   color:white;
-  font-weight:300;
-  letter-spacing:2px;
+  text-align:left;
 }
 
 .menu div{
-  font-size:60px;
-  margin:35px 0;
+  font-size:64px;          /* ちゃんと存在感 */
+  margin:40px 0;
   cursor:pointer;
-  transition:transform 0.3s ease, letter-spacing 0.3s ease;
-  display:block;              /* ←ここ重要 */
-  transform-origin:right center; /* 右基準で拡大 */
+  letter-spacing:6px;
+  font-weight:300;
+
+  transition:
+    transform 0.35s ease,
+    letter-spacing 0.35s ease,
+    text-shadow 0.35s ease;
+
+  transform-origin:left center;
 }
 
 .menu div:hover{
-  transform:scale(1.4);
-  letter-spacing:8px;
-  text-shadow:0 0 25px rgba(255,255,255,0.8);
+  transform:scale(1.25);
+  letter-spacing:12px;
+  text-shadow:0 0 30px rgba(255,255,255,0.8);
 }

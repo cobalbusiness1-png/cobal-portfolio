@@ -8,13 +8,15 @@
 /* 背景SVG */
 .hero-bg{
   position:absolute;
-  inset:0;                /* top:0;left:0;right:0;bottom:0 */
+  inset:0;
+  background:
+    linear-gradient(to right,
+      rgba(30,70,130,0.6) 0%,
+      rgba(30,70,130,0.3) 40%,
+      rgba(30,70,130,0.0) 70%
+    ),
+    url("asset/girl.svg") no-repeat left center;
 
-  background-image:url("asset/girl.svg");
-  background-repeat:no-repeat;
-  background-position:left center;
-  background-size:cover;  /* ←ここが重要 */
-
-  opacity:0.15;
-  pointer-events:none;
+  background-size:cover;
+  opacity:0.25;
 }
